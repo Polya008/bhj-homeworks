@@ -1,13 +1,16 @@
-let clicker = document.getElementById("clicker__counter");
-let cookie = document.getElementById("cookie");
-let speed = document.getElementById("clicker__speed");
+const clicker = document.getElementById("clicker__counter");
+const cookie = document.getElementById("cookie");
+const speed = document.getElementById("clicker__speed");
 
 let clickerCount = clicker.textContent;
+//let firstClick = new Date();
+
 
 cookie.onclick = function (){
-let firstClick = new Date();	
-
 	clicker.textContent ++;
+
+	 /*   let d = new Date();
+        let t = d.getTime();*/
 
 if(cookie.width === 200){
 		cookie.width = 300;
@@ -15,8 +18,6 @@ if(cookie.width === 200){
 		cookie.width = 200;
 	}
 
-let secondClick = new Date();
-speed.textContent = 1 / (secondClick - firstClick)  ;
-
-
+//let secondClick = new Date();
+//speed.textContent = (secondClick - firstClick)/2;
 }
