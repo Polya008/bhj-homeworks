@@ -1,12 +1,12 @@
-let popup = document.getElementById('modal_main');
+const popup = document.getElementById('modal_main');
 popup.onload = function (){
-	const oldClass = modal_main.className;
+	const oldClass = modal.className;
 	oldClass = modal_active;
 }
 
 let closeButton = Array.from(document.querySelectorAll('.modal__close'));
 closeButton.onclick = function(...args){
-	delete oldClass = modal_active;
+	delete oldClass //= modal_active;
 }
 
 let success = document.querySelector('show-success');
