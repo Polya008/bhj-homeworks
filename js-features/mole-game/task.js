@@ -1,32 +1,33 @@
-const holeTarget = document.querySelector('.hole');
+const holeTarget = document.querySelectorAll('.hole');
 const deadMole = document.getElementById('dead');
 const missed = document.getElementById('lost');
 let holeTargetArr = Array.from(holeTarget);
 
-/*function getHole(index){
-	return document.getElementById('hole${index}');
-}*/
-
-
 	deadMole.textContent = 0;
 	missed.textContent = 0;
-for(let i = 1; i < holeTargetArr.length; i++) {
+for(let i = 0; i < holeTargetArr.length; i++) {
 
-	holeTarget.onclick = function (){
-
-
-		if(holeTarget.className.includes('.hole_has-mole')){
+	holeTargetArr[i].onclick = function (){
+		if(holeTargetArr[i].className.includes('hole_has-mole')){
 			deadMole.textContent++;
 		} else {
 			missed.textContent++;
 		}
 
-			if(deadMole.textContent === 10) {
+	
+			if(deadMole.textContent == 10) {
 				alert('Вы победили!');
-			} else if(missed.textContent === 5){
-				alert('Вы проиграли...');
+				deadMole.textContent = 0;
+				missed.textContent = 0;
+				return;
 			}
-
+			 else if(missed.textContent == 5){
+				alert('Вы проиграли...');
+				deadMole.textContent = 0;
+				missed.textContent = 0;
+				return;
+			}
+		}
 	}
-}
+
 
