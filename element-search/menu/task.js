@@ -1,17 +1,33 @@
-const link = document.querySelectorAll('.menu__link');
+const menuLink = Array.from(document.querySelectorAll(".menu__link"));
+const menu
 
-for (let i = 0; i < link.length; i++) {
-	link.onclick = function(){
-		const parent = link.closest('.menu__item');
-		const oldClass = parent.className;
-		oldClass += menu_active;
+for (let i = 0; i < menuLink.length; i++) {
+ 	menuLink[i].onclick = function () {
+    let menuItem = menuLink[i].closest(".menu__item");
+    const menuSub = menuItem.querySelector('.menu_sub');
+ 	
+   		menuSub.classList.toggle("menu_active");
+   		return false;
+
+   			if(menuLink[i].querySelector('.menu_active') /*&& menuLink[i].closest('.menu_sub')*/){
+   			menuSub.classList.remove("menu_active");
+   			}
 
 
-		const sub = document.querySelectorAll('.menu_sub');
-		if(parent.includes(sub)){
-			function(){
-				return false;
-			}
-		}
+
+   			
 	}
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
