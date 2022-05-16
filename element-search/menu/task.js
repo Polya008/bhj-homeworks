@@ -1,5 +1,5 @@
 const menuLink = Array.from(document.querySelectorAll(".menu__link"));
-const menu
+//const menu
 
 for (let i = 0; i < menuLink.length; i++) {
  	menuLink[i].onclick = function () {
