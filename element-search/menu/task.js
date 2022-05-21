@@ -9,12 +9,10 @@ for (let i = 0; i < menuLink.length; i++) {
    		menuSub.classList.toggle("menu_active");
    		return false;
 
-   			if(menuLink[i].querySelector('.menu_active') /*&& menuLink[i].closest('.menu_sub')*/){
+   			if(menuLink[i].classList.contains('menu_active')){
+            //if(menuLink[i].querySelector('.menu_active') /*&& menuLink[i].closest('.menu_sub')*/){
    			menuSub.classList.remove("menu_active");
    			}
-
-
-
    			
 	}
 
