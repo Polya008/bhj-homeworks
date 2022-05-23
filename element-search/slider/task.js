@@ -16,23 +16,20 @@ prev.addEventListener('click', () => {
 	let newSlide = currentActive + 1;
 	newSlide = newSlide >= slides.length ?  0 : newSlide;
 	slide(newSlide);
-	dots(newSlide);
 });
 
 next.addEventListener('click', () => {
 	let newSlide = currentActive -1;
 	newSlide = newSlide < 0 ? slides.length -1 : newSlide;
 	slide(newSlide);
-	dots(newSlide);
 });
 
 //повыш сложность
-let sliderDots = Array.from(document.querySelectorAll('.slider__dot'));
-let currentDot = slides[currentActive];
+//let currentDot = slides[currentActive];
 //let currentDot = sliderDots.findIndex((item) => item.classList.contains('slider__dot_active'));
 
 
-function dots(newDot){
+/*function dots(newDot){
 
 	sliderDots[currentDot].classList.remove('slider__dot_active');
 	sliderDots[newDot].classList.add('slider__dot_active');
@@ -40,3 +37,4 @@ function dots(newDot){
 	currentDot = newDot;
 }
 
+*/
