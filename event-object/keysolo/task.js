@@ -17,9 +17,11 @@ class Game {
   }
 
   registerEvents() {
-      const firstSymbol = document.querySelector('.symbol_current');
       document.addEventListener("keyup", (event) => {
-        if(firstSymbol.code === this.currentSymbol.textContent){
+
+        let firstSymbol = this.currentSymbol.textContent;
+        let inputSymbol = event.key;
+        if(firstSymbol === inputSymbol){
           this.success();
         } else{
           this.fail()
