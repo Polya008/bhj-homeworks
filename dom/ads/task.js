@@ -10,16 +10,23 @@ let nextIndex = currentIndex + 1;
 let nextElem = rotatorCase[currentIndex + 1];
 
 
+
+
+
 		activeElem.classList.remove('rotator__case_active');
 		nextElem.classList.add('rotator__case_active');
 
 
          activeElem = nextElem;
 
-         if(currentIndex ===  rotatorCase.length ) {
-			nextIndex = 0;
+         if(currentIndex ===  rotatorCase.length - 1) {
+			nextElem = 0;
+			
+			currentIndex = 0;
 		}
 
 console.log(currentIndex)
-console.log(rotatorCase.length)
+console.log(nextIndex)
+
+
 } ,1000);

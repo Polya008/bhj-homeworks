@@ -1,28 +1,21 @@
-const reveal = document.querySelector(".reveal");
+const reveal = Array.from(document.querySelectorAll('.reveal'));
 
-function showReveal(el) {
-  const { top, bottom } = el.getBoundingClientRect();
-  console.log(el);
-  if (bottom < 0){
+function showReveal() {
+for (const rev of reveal){
+  const { top, bottom } = rev.getBoundingClientRect();
+
+  if (bottom < 0 || top > window.innerHeight){
     console.log(top, bottom);
-    return false;
+    rev.classList.remove("reveal_active");
   } 
   
-  if(top > window.innerHeight){
+  if(top < window.innerHeight){
     console.log(top, bottom);
-    return false;
+    rev.classList.add("reveal_active");
   }
   
-  if(el){
-    console.log(top, bottom);
-    el.classList.add("reveal_active");
-  }
   
+ }
 }
 
-
-//reveal.addEventListener("scroll", showReveal)
-
-
-//window.addEventListener('scroll', showReveal);
- setInterval(showReveal, 1000);
+window.addEventListener("scroll", showReveal);
