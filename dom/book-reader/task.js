@@ -10,7 +10,7 @@ console.log(control);
 console.log(text);
 
 
-/*
+/*здесь всё работает почти хорошо, но код дублируется
 fontSmall.addEventListener('click', (el) => {
 let activeIndex = allFonts.findIndex((item) => item.classList.contains('font-size_active'));
 console.log(activeIndex);
@@ -31,21 +31,28 @@ fontBig.addEventListener('click', (el) => {
   el.preventDefault();
 });*/
 
+allFonts.forEach(elem => {
 
-control.addEventListener('click', (el) => {
-  alert(hi);
+elem.addEventListener('click', (event) => {
+  event.preventDefault();
+console.log('done!!!!!')
+
   let activeIndex = allFonts.findIndex((item) => item.classList.contains('font-size_active'));
-  allFonts[activeIndex].classList.remove('font-size_active');
-  el.classList.add('font-size_active');
- 
 
-     if(el.classList.contains('font-size_small')){
+  allFonts[activeIndex].classList.remove('font-size_active');
+  elem.classList.add('font-size_active');
+
+      if(elem.classList.contains('font-size_small')){
       text.classList.add('book_fs-small');
-      el.preventDefault();
     
-   } else if(el.classList.contains('font-size_big')){
+   } else if(elem.classList.contains('font-size_big')){
       text.classList.add('book_fs-big');
-      el.preventDefault();
    }
 
-})
+   else {
+    text.classList.remove('book_fs-big');
+    text.classList.remove('book_fs-small');
+   }
+
+});
+ })

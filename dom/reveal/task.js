@@ -9,7 +9,7 @@ for (const rev of reveal){
     rev.classList.remove("reveal_active");
   } 
   
-  if(top < window.innerHeight){
+  if(top < window.innerHeight && bottom > 0){
     console.log(top, bottom);
     rev.classList.add("reveal_active");
   }
