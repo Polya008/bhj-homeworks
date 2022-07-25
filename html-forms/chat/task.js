@@ -6,7 +6,7 @@ widget.addEventListener('click', () => {
 	widget.classList.add('chat-widget_active');
 });
 
-function enterFunc(elem) {
+function enterFunc() {
 	const messages = document.getElementById('chat-widget__messages');
 
      messages.innerHTML  +=                 
@@ -14,11 +14,17 @@ function enterFunc(elem) {
                 <div class="message__time"></div>
                 <div class="message__text"></div>
              </div> `
-     let messageTime = document.querySelector('.message__time').innerHTML = Date.now();
+     let messageTime = document.querySelector('.message__time');
+
+     let date = new Date();
+     let dateHours = date.getHours();
+     let dateMinutes = date.getMinutes();
+     messageTime.textContent = `${dateHours} : ${dateMinutes}`;
+     console.log(messageTime.textContent)
+    
 	 
      let messageText = document.querySelector('.message__text');
      messageText = chatWidgetInput.value;
-
     };
 
 
