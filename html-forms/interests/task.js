@@ -1,24 +1,40 @@
-const interestCheck = Array.from(document.querySelectorAll('.interests_active'));
-//const interestCheck = document.querySelector('.interests_main')
-console.log(interestCheck)
-console.log(interestCheck.getComputedStyle);
-//let children = 
+const parents = Array.from(document.querySelectorAll('.interest__check'));
 
- 
-for(const check of interestCheck){
+//находим 2 Ul
+let parentBoxes = [];
 
-check.addEventListener('change', (el) => {
-if(check.checked){
-	
-    //let active = el.querySelector('.checked');
-		
-			console.log('получилось2')
-			active.children.checked = true;
-			
-		};
-			
-			
-			
-	});
+parents.forEach(item => {
+ if(!item.closest('.interests_active')) {
+ 	parentBoxes.push(item);
+ }
+});
+
+//console.log(parentBoxes);
+
+
+
+for(const check of parentBoxes){
+
+	check.addEventListener('change', () => {
+
+
+    let oneParent = check.closest('.interest');
+    let child = oneParent.querySelector('.interests_active');
+    let children = Array.from(child.querySelectorAll('input'));
+    console.log(children)
+
+
+    children.forEach(elem => {
+     if(check.checked){
+			elem.checked = true;
+		}else{
+			elem.checked = false;
+		}
+	})
+				
+				
+				
+		});
+
 
 }
