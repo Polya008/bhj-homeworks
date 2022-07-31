@@ -68,6 +68,20 @@ class Autocomplete {
   }
 
   getMatches( text ) {
+
+    const options = this.input.options;
+    const inputAutocomplete = document.querySelector('.autocomplete__search');
+ 
+    inputAutocomplete.addEventListener('keydowm', (event) => {
+      let wordSymbol = this.currentSymbol.textContent;
+      let inputSymbol = event.key;
+
+      
+
+      for(let option of options){
+
+      }
+    })
     /*
       TODO: этот метод нужно дописать
       text - фраза, которую вводят в поле поиска
