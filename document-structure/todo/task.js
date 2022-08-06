@@ -6,7 +6,8 @@ const tasksList = document.getElementById('tasks__list');
 taskAddButton.addEventListener('click', (e) => {
     e.preventDefault();
 	
-	if(taskInput.value !== '') {
+
+	if(taskInput.value.trim()) {
 		tasksList.insertAdjacentHTML('afterend', `<div class="task"><div class="task__title">${taskInput.value}</div><a href="#" class="task__remove">&times;</a></div>`);
 	}
 

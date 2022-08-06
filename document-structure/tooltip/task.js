@@ -7,42 +7,47 @@ let tooltipNew = document.createElement('div');
 for(let tooltip of tooltips){
 	tooltip.addEventListener('click', (e) => {
 		e.preventDefault();
-        tooltip.insertBefore(tooltipNew, null);
+    tooltip.insertBefore(tooltipNew, null);
 		tooltipNew.append(tooltip.title);
 		tooltipNew.classList.add('tooltip');
-        tooltipNew.classList.add('tooltip_active');
-        //tooltipNew.classList.toggle('tooltip_active');
-        //tooltipNew.style = "left: 0; top: 0";
+    tooltipNew.classList.add('tooltip_active');
+    //tooltipNew.classList.toggle('tooltip_active');
+    tooltipNew.style.left = left + 'px';
+    tooltipNew.style.top = top + 'px';
 
 
 
+if(e.currentTarget === tooltip){
+
+}
 //положение подсказки
         //let coords = tooltip.getBoundingClientRect();
-        //let {left , top}  = coords.left + 2;
+        //let {left , top}  = coords;
 
         let {left , top}  = tooltip.getBoundingClientRect();
-        	if (left < 0) {
-        		left = 0;
-        	}else{
-        		left += 5;
-        	}
 
-         
-      		if (top < 0) { 
-              top += 5;
+
+
+
+//клик в другом месте страницы
+  window.addEventListener('click', (e) =>  {
+      if(!e.target.classList.contains('has-tooltip')) {  //+ в условие ( || e.target!==tooltip)
+       tooltipNew.classList.remove('tooltip_active');
+       tooltipNew.remove();
+       tooltipNew.textContent = '';
+      }else{
+        tooltipNew = e.currentTarget;
       }
+
+
+	});
+
+
+
+
 
 });
 };
 
-//клик в другом месте страницы
-  window.addEventListener('click', (e) =>  {
 
-      if(!e.classList.contains('has-tooltip')) {
-      	console.log('опа')
-       // tooltipNew.remove();
-        //tooltipNew = null;
-      };
-
-	});
 

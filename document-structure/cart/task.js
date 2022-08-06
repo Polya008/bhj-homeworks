@@ -6,7 +6,7 @@ const minimum = 1;
 //убавление товара
 for(let dec of decs) {
 	dec.addEventListener('click', () => {
-		let count = dec.nextElementSibling.textContent--;
+		dec.nextElementSibling.textContent--;
 		if(dec.nextElementSibling.textContent < minimum) {
 			dec.nextElementSibling.textContent = minimum;
 		}
@@ -16,39 +16,54 @@ for(let dec of decs) {
 //добавление товара
 for(let inc of incs) {
 	inc.addEventListener('click', () => {
-		let count = inc.previousElementSibling.textContent++;
+		inc.previousElementSibling.textContent++;
 	});
 }
 
 
 //добавляем в корзину
 const adds = Array.from(document.querySelectorAll('.product__add'));
+
+//корзина
 const cartProducts = document.querySelector('.cart__products');
+
+
 
 for(let add of adds){
 	add.addEventListener('click', () => {
 
+
+		let productInCart = Array.from(cartProducts.querySelectorAll('.cart__product'));
+		console.log(productInCart);
+
+		
 		//кол-во в корзину
-		cartProducts.insertAdjacentHTML('afterend', `<div class="cart__product" data-id="1"><img class="cart__product-image" src="image.png"><div class="cart__product-count"></div></div>`);
+		cartProducts.insertAdjacentHTML('beforeend', `<div class="cart__product" data-id="1"><img class="cart__product-image" src="image.png"><div class="cart__product-count"></div></div>`);
 		let productCount = document.querySelector('.cart__product-count');
 		let count = document.querySelector('.product__quantity-value');
-		productCount.value = count.textContent;
-		console.log(productCount.value)
+		productCount.textContent = count.textContent;
+		console.log(productCount.textContent)
 
 
 		//картинка в корзину
-		let cartImg = document.querySelector('.cart__product-image');
+		let cartImg = Array.from(document.querySelector('.cart__product-image'));
 		let productImg = document.querySelector('.product__image');
-		cartImg.setAttribute('Src', productImg.getAttribute('Src'));
+		console.log(cartImg)
+		//cartImg.setAttribute('Src', productImg.getAttribute('Src'));
 
 		//id
-		let cartProductCart = document.querySelector('[data-id]');
-		console.log(cartProductCart.getAttribute('data-id'));
-		let product = document.querySelector('product');
-		cartProductCart.setAttribute('Data-id', cartProductCart.getAttribute('data-id'))
-
-
-
-
+		let cartProductCart = Array.from(document.querySelectorAll('[data-id]'));
+		//console.log(cartProductCart.getAttribute('[data-id]'));
+		//let product = document.querySelector('product');
+		cartProductCart.setAttribute('Data-id', cartProductCart.getAttribute('[data-id]'))
 	});
+
+	/*if(productInCart.find((item) => item.dataset.id)){
+		console.log('то то и оно')
+	};*/
+	//console.log(cartProducts.getAttribute)
+
+	
 }
+
+
