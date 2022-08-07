@@ -6,7 +6,7 @@ widget.addEventListener('click', () => {
 });
 
 
-//ввод сооющения клиента
+//ввод сообщения клиента
 function enterFunc() {
     let chatMessages = [];
 	const messages = document.getElementById('chat-widget__messages');
@@ -27,21 +27,14 @@ function enterFunc() {
      messages.innerHTML  +=                 
 	        ` <div class="message message_client">
                 <div class="message__time">${dateHours} : ${dateMinutes}</div>
-                <div class="message__text"></div>
+                <div class="message__text">${chatWidgetInput.value}</div>
              </div> `
 
     
    let messageText = document.querySelector('.message__text');
-     messageText.textContent = chatWidgetInput.value;
-
-    chatMessages.push(messages);
-
-
-     chatWidgetInput.value = '';
+   chatWidgetInput.value = '';
 
      
-
-
 //сразу добавляем сообщение от чат-бота
 
         let dateRobot = new Date();
@@ -52,17 +45,14 @@ function enterFunc() {
             }
 
 
-       if(!messages.classList.contains('message_client')){
+        let robotAnswer = ['Добрый день! До свидания!', 'Вот вообще не интересно', 'Кто вы такой? Давайте, до свидания!', 'И что, вы сами не можете решить проблему?!', 'Это снова вы?!', 'Простите, все операторы заняты, не пишите нам больше!'];
+
+        if(!messages.classList.contains('message_client')){
         messages.innerHTML  +=                 
             `<div class="message">
                 <div class="message__time">${dateHoursRobot} : ${dateMinutesRobot}</div>
-                <div class="message__text"></div>
+                <div class="message__text">${robotAnswer[Math.floor(Math.random() * robotAnswer.length)]}</div>
                         </div>`
-
-
-        let robotAnswer = ['Добрый день! До свидания!', 'Вот вообще не интересно', 'Кто вы такой? Давайте, до свидания!', 'И что, вы сами не можете решить проблему?!', 'Это снова вы?!', 'Простите, все операторы заняты, не пишите нам больше!'];
-        messageText.textContent = robotAnswer[Math.floor(Math.random() * robotAnswer.length)];
-        chatMessages.push(robotAnswer[Math.floor(Math.random() * robotAnswer.length)]);
         }
 
     };
