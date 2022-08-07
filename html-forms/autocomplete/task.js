@@ -69,19 +69,20 @@ class Autocomplete {
 
   getMatches( text ) {
 
-    const options = this.input.options;
-    const inputAutocomplete = document.querySelector('.autocomplete__search');
- 
-    inputAutocomplete.addEventListener('keydowm', (event) => {
-      let wordSymbol = this.currentSymbol.textContent;
-      let inputSymbol = event.key;
+    const options = Array.from(this.input.options);
+    const result = [];
 
+      options.forEach((option) => {
+        if(option.innerText.includes(text)){
+          result.push({
+            text: option.innerText,
+            value:option.value
+          });
+        }
+      })
+      return result;
+    }
       
-
-      for(let option of options){
-
-      }
-    })
     /*
       TODO: этот метод нужно дописать
       text - фраза, которую вводят в поле поиска
@@ -94,14 +95,14 @@ class Autocomplete {
         text: 'Содержимое <option>',
         value: 'Содержимое атрибута value'
       }
-    */
+    
     return [
       {
         text: 'Чубакка',
         value: '1'
       }
     ];
-  }
+  }*/
 }
 
 new Autocomplete( document.querySelector( '.autocomplete' ));
