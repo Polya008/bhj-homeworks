@@ -14,7 +14,7 @@ xhr.responseType = 'json';
 xhr.addEventListener('readystatechange', () => {
 	let responseServ = xhr.response;
 
-	if(xhr.readyState === xhr.DONE){
+	if(xhr.readyState === 4){
 		console.log(responseServ);
 		pollTitle.textContent = responseServ.data.title;
 		for(let ans of responseServ.data.answers){
