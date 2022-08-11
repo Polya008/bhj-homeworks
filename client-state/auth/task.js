@@ -5,6 +5,11 @@ const button = document.getElementById('signin__btn');
 const signin = document.getElementById('signin');
 
 
+function welcomeUser(){
+	signinForm.classList.add('welcome');
+	welcome.classList.add('welcome_active');
+}
+
 
 button.addEventListener('click', () => {
   signinForm.addEventListener('submit', (e) => {
@@ -18,30 +23,30 @@ button.addEventListener('click', () => {
 	 xhr.send(formData);
 
 
-
-	 xhr.addEventListener('readystatechange', () => {
-	 	if(xhr.readyState === xhr.DONE){
+	 xhr.addEventListener('load', () => {
+	 	
 	 		let responseServ = xhr.response;
 	 		
 	 		console.log(responseServ)
 
 	 		if(responseServ.success) {
-	 			signin.classList.remove('signin_active');
-	 			welcome.classList.add('welcome_active');
 	 			userID.textContent = responseServ.user_id; 
 	 			localStorage.setItem('user_id', responseServ.user_id);
+
+	 			welcomeUser();
+
 	 		} else{
 	 			alert('Неверный логин/пароль');
 	 		}
-	 	}
+	 	signinForm.reset();
 	 });
    })
 });
 
 window.addEventListener('load', () => {
 	if(localStorage.getItem){
-		signin.classList.remove('signin_active');
-		welcome.classList.add('welcome_active');
 		userID.textContent = localStorage.getItem('user_id');
+
+		welcomeUser();
 	}
 })
