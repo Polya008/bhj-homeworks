@@ -1,5 +1,5 @@
 const tooltips = Array.from(document.querySelectorAll('.has-tooltip'));
-
+/*
 const createElement = (title, top, left) => {
   let tooltipNew = document.createElement('div');
   tooltipNew.textContent = title;
@@ -8,31 +8,21 @@ const createElement = (title, top, left) => {
   return tooltipNew;
 }
 
-
-
 const showTooltip = (event) => {
   event.preventDefault();
-
   let tooltip = document.querySelector('.tooltip');
-
   let {left , top}  = tooltip.getBoundingClientRect();
   tooltipNew.style.left = left + 'px';
   tooltipNew.style.top = (top + 20) + 'px';
-
-
 }
-
-
-
-
 
 tooltips.forEach((tooltip) => {
   tooltip.addEventListener('click', showTooltip);
 })
+*/
 
-/*
+
 let tooltipNew = document.createElement('div');
-//let {left , top}  = tooltip.getBoundingClientRect();
 
 for(let tooltip of tooltips){
 	tooltip.addEventListener('click', (e) => {
@@ -43,20 +33,14 @@ for(let tooltip of tooltips){
 		tooltipNew.classList.add('tooltip');
     tooltipNew.classList.toggle('tooltip_active');
 
-    tooltipNew.style.left = left + 'px';
-    tooltipNew.style.top = top + 'px';
-
-
-
-if(e.currentTarget === tooltip){
-
+if(!tooltipNew.classList.contains('tooltip_active')){
+   tooltipNew.textContent = '';
 }
-//положение подсказки
-        //let coords = tooltip.getBoundingClientRect();
-        //let {left , top}  = coords;
 
-        let {left , top}  = tooltip.getBoundingClientRect();
-*/
+ let {left , top}  = tooltip.getBoundingClientRect();
+    tooltipNew.style.left = left + 'px';
+    tooltipNew.style.top = (top + 20) + 'px';
+     
 
 /*
 //клик в другом месте страницы
@@ -69,7 +53,6 @@ if(e.currentTarget === tooltip){
         tooltipNew = e.currentTarget;
       }
 */
+}
 
-//	});
-//});
-//};
+)};
