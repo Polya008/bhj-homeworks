@@ -31,45 +31,17 @@ for(let add of adds){
 		let productItem = add.closest('.product');
 		let productImg = productItem.querySelector('img');
 		let productCount = productItem.querySelector('.product__quantity-value');
-		console.log(productCount.textContent)
-		const all = Array.from(document.querySelectorAll('.cart__product'));
+		const all = Array.from(cartProducts.getElementsByClassName('cart__product'))
 
 		const inMyCart = all.find(item => item.dataset.id === productItem.dataset.id);
-		console.log(all)
-
 
 		if(inMyCart){
-			//productCount.textContent = count.textContent;
-            //const countInCart = cartProducts.querySelector('.cart__product-count')
-
-
-
-            let countInCart = cartProducts.querySelector('.cart__product-count');
-            console.log(countInCart)
-           
-
+	
+            let countInCart = inMyCart.querySelector('.cart__product-count');
+         
              countInCart.textContent = productCount.textContent ;
              countInCart.textContent++;
-			/*let productInCart = Array.from(cartProducts.querySelectorAll('.cart__product'));
-			console.log(productInCart);
 
-			
-			//кол-во в корзину
-			let count = productItem.querySelector('.product__quantity-value');
-
-			//cartProducts.insertAdjacentHTML('afterbegin', `<div class="cart__product" data-id="1"><img class="cart__product-image" src="image.png"><div class="cart__product-count">${count.textContent}</div></div>`);
-
-
-			//картинка в корзину
-			let cartImg = Array.from(document.querySelector('.cart__product-image'));
-			let productImg = productItem.querySelector('.product__image');
-			
-
-			//id
-			let cartProductCart = Array.from(document.querySelectorAll('[data-id]'));
-			//console.log(cartProductCart.getAttribute('[data-id]'));
-			//let product = document.querySelector('product');
-			cartProductCart.setAttribute('Data-id', cartProductCart.getAttribute('[data-id]'))*/
 		} else {
 			cartProducts.insertAdjacentHTML('afterbegin', `<div class="cart__product" data-id=${productItem.dataset.id}><img class="cart__product-image" src=${productImg.src}><div class="cart__product-count">${productCount.textContent}</div></div>`);
 

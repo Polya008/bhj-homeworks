@@ -27,7 +27,8 @@ let tooltipNew = document.createElement('div');
 for(let tooltip of tooltips){
 	tooltip.addEventListener('click', (e) => {
 		e.preventDefault();
-    tooltip.insertBefore(tooltipNew, null);
+    //tooltip.insertBefore(tooltipNew, null);
+    tooltip.append(tooltipNew)  //эффект тот же..
     //tooltipNew.insertAdjacentHTML('beforeend', )
 		tooltipNew.append(tooltip.title);;
 		tooltipNew.classList.add('tooltip');
@@ -41,6 +42,13 @@ if(!tooltipNew.classList.contains('tooltip_active')){
     tooltipNew.style.left = left + 'px';
     tooltipNew.style.top = (top + 20) + 'px';
      
+
+console.log(tooltipNew.textContent)
+console.log(e.currentTarget)
+if(!tooltip.nextElementSibling.classList.contains('tooltip_active')){
+  tooltipNew.textContent = '';
+}
+
 
 /*
 //клик в другом месте страницы
