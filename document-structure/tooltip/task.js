@@ -1,66 +1,28 @@
-const tooltips = Array.from(document.querySelectorAll('.has-tooltip'));
-/*
-const createElement = (title, top, left) => {
-  let tooltipNew = document.createElement('div');
-  tooltipNew.textContent = title;
-  tooltipNew.classList.add('tooltip');
-  tooltipNew.classList.toggle('tooltip_active');
-  return tooltipNew;
-}
+const tooltips = document.querySelectorAll('.has-tooltip');
 
-const showTooltip = (event) => {
-  event.preventDefault();
-  let tooltip = document.querySelector('.tooltip');
-  let {left , top}  = tooltip.getBoundingClientRect();
-  tooltipNew.style.left = left + 'px';
-  tooltipNew.style.top = (top + 20) + 'px';
-}
-
-tooltips.forEach((tooltip) => {
-  tooltip.addEventListener('click', showTooltip);
-})
-*/
-
-
-let tooltipNew = document.createElement('div');
-
-for(let tooltip of tooltips){
-	tooltip.addEventListener('click', (e) => {
+for(let item of tooltips){
+	item.addEventListener('click', (e) => {
 		e.preventDefault();
-    //tooltip.insertBefore(tooltipNew, null);
-    tooltip.append(tooltipNew)  //эффект тот же..
-    //tooltipNew.insertAdjacentHTML('beforeend', )
-		tooltipNew.append(tooltip.title);;
-		tooltipNew.classList.add('tooltip');
-    tooltipNew.classList.toggle('tooltip_active');
-
-if(!tooltipNew.classList.contains('tooltip_active')){
-   tooltipNew.textContent = '';
-}
-
- let {left , top}  = tooltip.getBoundingClientRect();
-    tooltipNew.style.left = left + 'px';
-    tooltipNew.style.top = (top + 20) + 'px';
-     
-
-console.log(tooltipNew.textContent)
-console.log(e.currentTarget)
-if(!tooltip.nextElementSibling.classList.contains('tooltip_active')){
-  tooltipNew.textContent = '';
-}
+    const tooltipActive = document.querySelector('.tooltip_active');
+        if (tooltipActive !== null) {
+           if (event.target.title == tooltipActive.textContent) {
+              tooltipActive.remove();
+              return false;
+            } 
+            tooltipActive.remove();
+        }
 
 
-/*
-//клик в другом месте страницы
-  window.addEventListener('click', (e) =>  {
-      if(!e.target.classList.contains('has-tooltip')) {  //+ в условие ( || e.target!==tooltip)
-       tooltipNew.classList.remove('tooltip_active');
-       tooltipNew.remove();
-       tooltipNew.textContent = '';
-      }else{
-        tooltipNew = e.currentTarget;
-      }
-*/
-}
+        const element = event.target;
+        const tooltipNew = document.createElement('div');
+        tooltipNew.className = "tooltip tooltip_active";
+        let {left , top}  = item.getBoundingClientRect();
+          tooltipNew.style.left = left + 'px';
+          tooltipNew.style.top = (top + 20) + 'px';
+        tooltipNew.textContent = element.title;
+        element.insertAdjacentHTML('afterend', tooltipNew.outerHTML);       
+        return false;
+        });
 
-)};
+    }
+  
