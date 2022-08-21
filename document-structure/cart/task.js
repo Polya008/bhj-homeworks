@@ -38,16 +38,11 @@ for(let add of adds){
 		if(inMyCart){
 	
             let countInCart = inMyCart.querySelector('.cart__product-count');
-         
-             countInCart.textContent = productCount.textContent ;
-             countInCart.textContent = Number(countInCart.textContent) + Number(productCount.textContent);
+            countInCart.textContent = Number(countInCart.textContent) + Number(productCount.textContent);
 
 		} else {
 			cartProducts.insertAdjacentHTML('afterbegin', `<div class="cart__product" data-id=${productItem.dataset.id}><img class="cart__product-image" src=${productImg.src}><div class="cart__product-count">${productCount.textContent}</div></div>`);
-
 		}
-
-//		productCount.textContent = 1;
 	});	
 }
 
